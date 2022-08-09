@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Defines a base model class."""
 import json
 import csv
@@ -7,10 +6,10 @@ import turtle
 
 
 class Base:
-    """Base model.
-    This Represents the "base" for all other classes in project 0x0C*.
-    Private Class Attributes:
-        __nb_object (int): Number of instantiated Bases.
+    """Represent the base model.
+    Represents the "base" for all other classes in project 0x0C*.
+    Attributes:
+        __nb_objects (int): The number of instantiated Bases.
     """
 
     __nb_objects = 0
@@ -65,7 +64,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """Return a class instantied from a dictionary of attributes.
+        """Return a class instantiated from a dictionary of attributes.
         Args:
             **dictionary (dict): Key/value pairs of attributes to initialize.
         """
@@ -86,9 +85,9 @@ class Base:
             Otherwise - a list of instantiated classes.
         """
         filename = str(cls.__name__) + ".json"
-[O        try:
+        try:
             with open(filename, "r") as jsonfile:
-                list_dicts = Base.from_json_string(jsonfile.read())
+[O                list_dicts = Base.from_json_string(jsonfile.read())
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
